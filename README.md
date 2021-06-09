@@ -41,7 +41,7 @@ It's a bit off-center, yes. You'll have to do a bit of editing to get it to be c
 ![enter image description here](assets/images/sunrise-shot-end-aac-16k-gbrp-edit.jpg)
 (assets/images/sunrise-shot-end-aac-16k-gbrp-edit.jpg)
 
-That's better. In general, the only parameter you can't change willy-nilly (because it's related to the output image) is the resolution parameter.
+That's better. In general, the only parameter you can't change willy-nilly (because it's related to the output image) is the resolution parameter. Other than that, it'll work with pretty much any valid combination of parameters.
 
 ## Protip
 
@@ -111,7 +111,9 @@ On Ubuntu 20.04 (WSL), this yields:
  DEA.L. wmav2                Windows Media Audio 2
 ~~~
 
-Many of these codecs won't work with this current script, but at least some of these should. It's usually the sampling rate that's at fault, second being the extension of the Step 2 file. Go and dive into the script for that; the variables you want to change are `sample_rate` and `step2_out_extension` respectively. Some of them will work, but will silently downsample the internal audio down to a lower sampling rate. It's also worth pointing out that the minimum bitrate is a thing; lots of these codecs don't even try running at anything lower than 32 kbps. 
+Many of these codecs won't work with this current script, but at least some of these should. It's usually the sampling rate that's at fault, second being the extension of the Step 2 file. Go and dive into the script for that; the variables you want to change are `sample_rate` and `step2_out_extension` respectively. 
+
+Some of them will work, but will silently downsample the internal audio down to a lower sampling rate. It's also worth pointing out that the minimum bitrate is a thing; lots of these codecs don't even try running at anything lower than 32 kbps. 
 
 It's all a bit of a mess, frankly.
 
