@@ -22,10 +22,9 @@ However, no checking is done, so go wild!
 
 Which should be fairly self-explanatory. Let's pull out the lab rat for today:
 
-![enter image description here](https://i.postimg.cc/0xpxPj2L/sunrise-shot.jpg)
-[Photo](https://unsplash.com/photos/9NAIl5DKfVU) by [Jack B](https://unsplash.com/@nervum) on [Unsplash](https://unsplash.com/)
+![enter image description here](assets/images/sunrise-shot.jpg)
 
-(assets/images/sunrise-shot.jpg)
+[Photo](https://unsplash.com/photos/9NAIl5DKfVU) by [Jack B](https://unsplash.com/@nervum) on [Unsplash](https://unsplash.com/)
 
 Run
 
@@ -34,12 +33,10 @@ I2A2I.py 1920x1279 sunrise-shot.jpg aac 16k gbrp
 ~~~
 
 ![enter image description here](assets/images/sunrise-shot-end-aac-16k-gbrp.jpg)
-(assets/images/sunrise-shot-end-aac-16k-gbrp.jpg)
 
 It's a bit off-center, yes. You'll have to do a bit of editing to get it to be centered. Here's the edit of that: 
 
 ![enter image description here](assets/images/sunrise-shot-end-aac-16k-gbrp-edit.jpg)
-(assets/images/sunrise-shot-end-aac-16k-gbrp-edit.jpg)
 
 That's better. In general, the only parameter you can't change willy-nilly (because it's related to the output image) is the resolution parameter. Other than that, it'll work with pretty much any valid combination of parameters.
 
