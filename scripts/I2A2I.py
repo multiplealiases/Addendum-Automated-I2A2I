@@ -111,7 +111,7 @@ subprocess.run(step2_list, check=True)
 ## seeing audio instead of an image.
 
 step3_list = ["ffmpeg","-y","-i",f"{step2_out}{step2_out_extension}",
-              "-f",step2_format, f"{step3_out}.raw"]
+              "-f",step2_format,"-ar",sample_rate, f"{step3_out}.raw"]
 print(step3_list)
 subprocess.run(step3_list, check=True)
 
