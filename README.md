@@ -1,6 +1,6 @@
 # Addendum: Automated image to audio 'bending
 
-(This is an addendum to *[(Ab)using Lossy Audio Compression to Databend Images](https://github.com/multiplealiases/Databending-In-Audacity-Required-Reading/blob/main/README.md)*.)
+(This is an addendum to *[(Ab)using Lossy Audio Compression to Databend Images](https://github.com/multiplealiases/Databending-With-FFmpeg/blob/main/README.md)*.
 
 This is definitely something I should've done a long time ago, considering the long and tedious commands needed to do this. This more-or-less supersedes the old method of typing in 4 complex commands into the terminal, but I'll keep it in there for posterity and understanding.
 
