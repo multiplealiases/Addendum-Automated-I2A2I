@@ -45,7 +45,7 @@ if shutil.which("ffmpeg") is None:
 
 if len(sys.argv) == 1:
     print(f"Usage: {os.path.basename(__file__)} [resolution] [filename w/ extension] \
-[audio codec] [bitrate] [internal pixel format] [offset in pixels, leftwards]")
+[audio codec] [bitrate] [internal pixel format] [offset in pixels, rightwards]")
     print("The internal pixel format should be \"rgb24\" for interleaved 24-bit RGB\
 , and \"gbrp\" for planar 24-bit RGB.")
     print("However, no checking is done, so go wild!")
