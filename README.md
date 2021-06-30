@@ -123,7 +123,7 @@ Let's run it without arguments:
 ~~~
 > python I2A2I-iterator-roll.py
 
-Usage: I2A2I-iterator-roll.py [resolution] [filename w/ extension] [audio codec] [bitrate] [internal pixel format] [offset in pixels, leftwards]
+Usage: I2A2I-iterator-roll.py [resolution] [filename w/ extension] [audio codec] [bitrate] [internal pixel format] [offset in pixels, rightwards]
 The internal pixel format should be "rgb24" for interleaved 24-bit RGB, and "gbrp" for planar 24-bit RGB.
 However, no checking is done, so go wild!
 This is the iterator version.
