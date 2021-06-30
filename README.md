@@ -24,7 +24,7 @@ Which should be fairly self-explanatory. Let's pull out the lab rat for today:
 
 ![enter image description here](assets/images/sunrise-shot.jpg)
 
-[Photo](https://unsplash.com/photos/9NAIl5DKfVU) by [Jack B](https://unsplash.com/@nervum) on [Unsplash](https://unsplash.com/)
+[Photo](https://unsplash.com/photos/9NAIl5DKfVU) by [Jack B](https://unsplash.com/@nervum) on [Unsplash](https://unsplash.com/) (download the Medium-sized version to replicate what I did.)
 
 Run
 
@@ -114,7 +114,73 @@ Some of them will work, but will silently downsample the internal audio down to 
 
 It's all a bit of a mess, frankly.
 
+## The iterator + roll version
 
+I present to you, [scripts/I2A2I-iterator-roll.py](I2A21-iterator-roll.py)! This thing iterates and rolls, hence the name. It iterates on a list (not very efficiently, mind you, but better than nothing) of options, and it can roll an image (offset, if you've read *Required Reading*) by a certain amount of pixels on the output if you give it an offset in pixels.
+
+Let's run it without arguments:
+
+~~~
+> python I2A2I-iterator-roll.py
+
+Usage: I2A2I-iterator-roll.py [resolution] [filename w/ extension] [audio codec] [bitrate] [internal pixel format] [offset in pixels, leftwards]
+The internal pixel format should be "rgb24" for interleaved 24-bit RGB, and "gbrp" for planar 24-bit RGB.
+However, no checking is done, so go wild!
+This is the iterator version.
+"audio codec", "bitrate" and "internal pixel format"can be given a list of arguments.
+However, for most codecs, it is advisable to only give a list of bitrates, since the offset is fixed for each invocation.
+Split the list with commas (without spaces!), surrounding it in single quotes ('') on Unix-likes.
+~~~
+
+Let's do it on the image we started with. I'll demonstrate the offsetting feature:
+
+~~~
+python I2A2I-iterator-roll.py 1920x1279 sunrise-shot.jpg aac 256k gbrp 0
+~~~
+
+![a](assets/images/sunrise-shot-end-aac-256k-gbrp-0.png)
+
+Er, it doesn't yet have hue-correction abilities. You'll have to correct it yourself if you're using 24-bit interleaved RGB (rgb24). The thing that makes it easy is that it's usually in 60 degree increments, or at worst 30.
+
+Regardless, measuring from the break to the right edge of the image, we see that it's 896 pixels away. Let's put that into a new command:
+
+~~~
+python I2A2I-iterator-roll.py 1920x1279 sunrise-shot.jpg aac 256k gbrp 896
+~~~
+
+That will produce this image:
+
+![b](assets/images/sunrise-shot-end-aac-256k-gbrp-896.png)
+
+You may need to measure, then re-measure, and so on until your offset's right. Protip: you can add offsets together like any integers.
+
+With this offset locked down, we can now play around with multiple bitrates at once. Try:
+
+~~~
+python I2A2I-iterator-roll.py 1920x1279 sunrise-shot.jpg aac 8k,32k,64k,128k gbrp 896
+~~~
+
+And that will spit out the following images. No editing was done.
+
+![b](assets/images/sunrise-shot-end-aac-8k-gbrp-896.png)
+
+![b](assets/images/sunrise-shot-end-aac-32k-gbrp-896.png)
+
+![b](assets/images/sunrise-shot-end-aac-64k-gbrp-896.png)
+
+![b](assets/images/sunrise-shot-end-aac-128k-gbrp-896.png)
+
+The iterator let me find some fairly interesting effects, too. Here's that same image, but with Opus @ 20 kbps, 24-bit RGB.
+
+![b](assets/images/sunrise-shot-end-libopus-20k-rgb24-0.png)
+
+The rainbow banding is most apparent on very colorful images. I think the range at which it shows up is around 16 kbps to 20 kbps, very narrow.
+
+And here's sorta a reference chart for the effect of a bunch of codecs at mostly a fixed bitrate.
+
+![b](assets/images/WB-RGB-CMY_test.png)
+
+If you look closely at the `libvorbis` one, you can actually see banding before the color's meant to transition. This is what's known as "pre-echo".
 
 ---
 This work (and all files within the folder `/assets` and all of its subdirectories recursively) is licensed under a
