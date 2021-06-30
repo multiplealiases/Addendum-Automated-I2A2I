@@ -113,13 +113,13 @@ for audio_codec_index in audio_codec_list:
             in_file   = sys.argv[2]
             step1_out = f"{in_filename}-step1-{pixel_format_index}"
             step2_out = f"{in_filename}-step2-\
-            {audio_codec_index}-{bitrate_index}-{pixel_format_index}"
+{audio_codec_index}-{bitrate_index}-{pixel_format_index}"
             step3_out = f"{in_filename}-step3-\
-            {step2_format}-{audio_codec_index}-{bitrate_index}-{pixel_format_index}"
+{step2_format}-{audio_codec_index}-{bitrate_index}-{pixel_format_index}"
             step4_out = f"{in_filename}-step4-\
-            {audio_codec_index}-{bitrate_index}-{pixel_format_index}"
+{audio_codec_index}-{bitrate_index}-{pixel_format_index}"
             step5_out = f"{in_filename}-end-\
-            {audio_codec_index}-{bitrate_index}-{pixel_format_index}-{roll_amount}"
+{audio_codec_index}-{bitrate_index}-{pixel_format_index}-{roll_amount}"
             step1_list = ["ffmpeg","-y","-i",in_file,
                           "-f","rawvideo","-pix_fmt",pixel_format_index,f"{step1_out}.raw"]
             print(step1_list)
